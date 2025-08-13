@@ -27,7 +27,7 @@ module tt_um_DalinEM-lab_asic (
      COMP_2 subckt_3(.vcc(VAPWR),.vss(VGND));
      BIAS_1 subckt_4(.vcc(VAPWR),.vss(VGND));
      delay_1 subckt_5(.vcc(VAPWR),.vss(VGND));
-     Timming subckt_6(.vcc(VAPWR),.vss(VGND);)
+     Timming subckt_6(.vcc(VAPWR),.vss(VGND));
      
     
     assign uo_out[0] = VGND;
