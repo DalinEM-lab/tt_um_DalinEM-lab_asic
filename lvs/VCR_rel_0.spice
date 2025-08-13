@@ -1,0 +1,203 @@
+** sch_path: /home/zerotoasic/Dalin/X51/xschem_x51/complete_VCR/VCR_rel_0.sch
+.subckt VCR_rel_0 VAPWR ua[4] ua[3] ua[0] VGND ua[1] ua[5] ua[2]
+*.PININFO VAPWR:I ua[4]:I ua[3]:I VGND:I ua[2]:B ua[0]:O ua[1]:I ua[5]:I
+x1 ua[0] VAPWR ua[1] ua[2] net1 VGND vcr_lvs
+x2 net2 ua[4] ua[3] VGND ua[2] timming_lvs
+x3 VAPWR VGND net1 net7 net3 net4 net6 comp_final_lvs
+x4 net3 net4 VAPWR VGND net6 bias_lvs_final
+x5 net2 VAPWR net5 VGND ua[5] net7 latch_sch
+x6 VAPWR net6 VGND net5 slowsw_lvs
+.ends
+
+* expanding   symbol:  /home/zerotoasic/Dalin/X51/xschem_x51/Light_sensor/final/vcr_lvs.sym # of pins=6
+** sym_path: /home/zerotoasic/Dalin/X51/xschem_x51/Light_sensor/final/vcr_lvs.sym
+** sch_path: /home/zerotoasic/Dalin/X51/xschem_x51/Light_sensor/final/vcr_lvs.sch
+.subckt vcr_lvs LED vcc vsen Vled VT vss
+*.PININFO vcc:I LED:O vsen:I vss:I VT:O Vled:I
+XM1 VT Vled vss vss sky130_fd_pr__nfet_g5v0d10v5 L=1 W=50 nf=10 m=1
+XM5 LED net1 vcc vcc sky130_fd_pr__pfet_g5v0d10v5 L=1 W=68 nf=8 m=1
+XM6 net1 net1 vcc vcc sky130_fd_pr__pfet_g5v0d10v5 L=1 W=4 nf=1 m=1
+XM7 net1 vsen net2 vss sky130_fd_pr__nfet_05v0_nvt L=9 W=10 nf=1 m=1
+XM2 net2 vsen net3 vss sky130_fd_pr__nfet_05v0_nvt L=9 W=10 nf=1 m=1
+XM3 net3 net1 VT vss sky130_fd_pr__nfet_05v0_nvt L=9 W=10 nf=1 m=1
+.ends
+
+
+* expanding   symbol:  /home/zerotoasic/Dalin/X51/xschem_x51/Light_sensor/final/timming_lvs.sym # of pins=5
+** sym_path: /home/zerotoasic/Dalin/X51/xschem_x51/Light_sensor/final/timming_lvs.sym
+** sch_path: /home/zerotoasic/Dalin/X51/xschem_x51/Light_sensor/final/timming_lvs.sch
+.subckt timming_lvs Vd vb2 vb3 vss Vled
+*.PININFO Vd:I vb2:I vb3:I vss:I Vled:B
+XM8 net2 net2 Vd vss sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=220 nf=22 m=1
+XM9 net4 vb2 net5 vss sky130_fd_pr__nfet_05v0_nvt L=10 W=1 nf=1 m=1
+XM12 net25 vb3 net3 vss sky130_fd_pr__nfet_05v0_nvt L=10 W=1 nf=1 m=1
+XM13 net3 vb3 net2 vss sky130_fd_pr__nfet_05v0_nvt L=10 W=1 nf=1 m=1
+XM16 net21 vb2 net4 vss sky130_fd_pr__nfet_05v0_nvt L=10 W=1 nf=1 m=1
+XM4 net5 vb2 Vled vss sky130_fd_pr__nfet_05v0_nvt L=10 W=1 nf=1 m=1
+XM10 net1 vb3 net25 vss sky130_fd_pr__nfet_05v0_nvt L=10 W=1 nf=1 m=1
+XR3 net13 Vd vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR19 net23 net22 vss sky130_fd_pr__res_xhigh_po_0p35 L=14 mult=1 m=1
+XR4 net14 net13 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR5 net15 net14 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR6 net16 net15 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR7 net17 net16 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR8 net18 net17 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR9 net19 net18 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR10 net20 net19 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR11 net20 net12 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR12 net12 net11 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR13 net11 net10 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR14 net10 net9 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR15 net9 net8 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR16 net8 net7 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR17 net7 net6 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR18 net6 net21 vss sky130_fd_pr__res_xhigh_po_0p35 L=15.5 mult=1 m=1
+XR1 Vled net23 vss sky130_fd_pr__res_xhigh_po_0p35 L=14 mult=1 m=1
+XR2 net1 net24 vss sky130_fd_pr__res_xhigh_po_0p35 L=14 mult=1 m=1
+XR20 net24 net22 vss sky130_fd_pr__res_xhigh_po_0p35 L=14 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  /home/zerotoasic/Dalin/X51/xschem_x51/comp/comp_x2/comp_final_lvs.sym # of pins=7
+** sym_path: /home/zerotoasic/Dalin/X51/xschem_x51/comp/comp_x2/comp_final_lvs.sym
+** sch_path: /home/zerotoasic/Dalin/X51/xschem_x51/comp/comp_x2/comp_final_lvs.sch
+.subckt comp_final_lvs vcc vss vin_p out vin_n vb vd_n
+*.PININFO vcc:I vss:I vin_p:I vin_n:I vb:I out:O vd_n:I
+XM1 net1 vb net4 vcc sky130_fd_pr__pfet_g5v0d10v5 L=20 W=2 nf=1 m=1
+XM2 net2 vin_p net1 vcc sky130_fd_pr__pfet_g5v0d10v5 L=2.4 W=2.5 nf=1 m=1
+XM4 net2 net2 vss vss sky130_fd_pr__nfet_g5v0d10v5 L=6 W=1 nf=1 m=1
+XM5 net3 net2 vss vss sky130_fd_pr__nfet_g5v0d10v5 L=6 W=1 nf=1 m=1
+XM3 net3 vin_n net1 vcc sky130_fd_pr__pfet_g5v0d10v5 L=2.4 W=2.5 nf=1 m=1
+XM6 net3 net3 vss vss sky130_fd_pr__nfet_g5v0d10v5 L=6 W=1 nf=1 m=1
+XM7 net2 net3 vss vss sky130_fd_pr__nfet_g5v0d10v5 L=6 W=1 nf=1 m=1
+XM8 net5 net5 net4 vcc sky130_fd_pr__pfet_g5v0d10v5 L=2.4 W=2.5 nf=1 m=1
+XM9 out net5 net4 vcc sky130_fd_pr__pfet_g5v0d10v5 L=2.4 W=2.5 nf=1 m=1
+XM10 out net3 vss vss sky130_fd_pr__nfet_g5v0d10v5 L=2.2 W=1 nf=1 m=1
+XM11 net5 net2 vss vss sky130_fd_pr__nfet_g5v0d10v5 L=2.2 W=1 nf=1 m=1
+XM12 net3 vin_n net1 vcc sky130_fd_pr__pfet_g5v0d10v5 L=2.4 W=2.5 nf=1 m=1
+XM13 net2 vin_p net1 vcc sky130_fd_pr__pfet_g5v0d10v5 L=2.4 W=2.5 nf=1 m=1
+XM14 net3 net3 vss vss sky130_fd_pr__nfet_g5v0d10v5 L=6 W=1 nf=1 m=1
+XM15 net2 net3 vss vss sky130_fd_pr__nfet_g5v0d10v5 L=6 W=1 nf=1 m=1
+XM16 net2 net2 vss vss sky130_fd_pr__nfet_g5v0d10v5 L=6 W=1 nf=1 m=1
+XM17 net3 net2 vss vss sky130_fd_pr__nfet_g5v0d10v5 L=6 W=1 nf=1 m=1
+XM18 net4 vd_n vcc vcc sky130_fd_pr__pfet_g5v0d10v5 L=10.05 W=1 nf=1 m=1
+XM19 net5 net5 net4 vcc sky130_fd_pr__pfet_g5v0d10v5 L=2.4 W=2.5 nf=1 m=1
+XM20 out net5 net4 vcc sky130_fd_pr__pfet_g5v0d10v5 L=2.4 W=2.5 nf=1 m=1
+.ends
+
+
+* expanding   symbol:  /home/zerotoasic/Dalin/X51/xschem_x51/bias/bias_lvs_final.sym # of pins=5
+** sym_path: /home/zerotoasic/Dalin/X51/xschem_x51/bias/bias_lvs_final.sym
+** sch_path: /home/zerotoasic/Dalin/X51/xschem_x51/bias/bias_lvs_final.sch
+.subckt bias_lvs_final vth vb vcc vss vd_n
+*.PININFO vcc:I vss:I vd_n:I vth:O vb:O
+XM7 net6 net4 net3 vcc sky130_fd_pr__pfet_g5v0d10v5 L=20 W=10 nf=1 m=1
+XM8 net4 net4 net3 vcc sky130_fd_pr__pfet_g5v0d10v5 L=20 W=10 nf=1 m=1
+XQ4 vss vss net5 sky130_fd_pr__pnp_05v5_W3p40L3p40 m=1
+XQ5 vss vss net1 sky130_fd_pr__pnp_05v5_W3p40L3p40 m=1
+XM2 net4 net6 net2 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=5 nf=1 m=1
+XM1 net6 net6 net5 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=3 nf=1 m=1
+XM9 vb net4 net3 vcc sky130_fd_pr__pfet_g5v0d10v5 L=20 W=1.5 nf=1 m=2
+XM10 net14 net4 net3 vcc sky130_fd_pr__pfet_g5v0d10v5 L=20 W=3 nf=1 m=1
+XM5 net7 vss net3 vcc sky130_fd_pr__pfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XM6 net6 net7 net3 vcc sky130_fd_pr__pfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XQ6 vss vss net1 sky130_fd_pr__pnp_05v5_W3p40L3p40 m=1
+XQ7 vss vss net1 sky130_fd_pr__pnp_05v5_W3p40L3p40 m=1
+XQ8 vss vss net1 sky130_fd_pr__pnp_05v5_W3p40L3p40 m=1
+XQ9 vss vss net1 sky130_fd_pr__pnp_05v5_W3p40L3p40 m=1
+XQ10 vss vss net1 sky130_fd_pr__pnp_05v5_W3p40L3p40 m=1
+XQ11 vss vss net1 sky130_fd_pr__pnp_05v5_W3p40L3p40 m=1
+XQ12 vss vss net1 sky130_fd_pr__pnp_05v5_W3p40L3p40 m=1
+XM3 net8 vb net9 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XM11 net9 vb net10 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XM12 net10 vb vss vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XM13 net11 vb net8 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XM14 net12 vb net11 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XM15 net13 vb net12 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XM16 vb vb net13 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XM4 net14 net14 vth vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XM18 vth net14 net15 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XM19 net15 net14 net13 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=0.5 nf=1 m=1
+XM17 net6 net4 net3 vcc sky130_fd_pr__pfet_g5v0d10v5 L=20 W=10 nf=1 m=1
+XM20 net4 net4 net3 vcc sky130_fd_pr__pfet_g5v0d10v5 L=20 W=10 nf=1 m=1
+XM21 net6 net6 net5 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=3 nf=1 m=1
+XM22 net4 net6 net2 vss sky130_fd_pr__nfet_g5v0d10v5 L=20 W=5 nf=1 m=1
+XR4 net17 net16 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR5 net18 net17 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR6 net19 net18 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR7 net20 net19 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR8 net21 net20 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR9 net22 net21 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR10 net33 net22 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR11 net31 net33 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR12 net24 net23 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR14 net26 net25 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR15 net27 net26 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR16 net28 net27 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR17 net29 net28 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR18 net30 net29 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR19 net34 net30 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR20 net31 net34 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR21 net32 net2 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR22 net16 net32 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR24 net23 net1 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR25 net25 net24 vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XC2 net7 vss sky130_fd_pr__cap_mim_m3_1 W=27.5 L=27.5 m=1
+XC3 net7 vss sky130_fd_pr__cap_mim_m3_1 W=27.5 L=27.5 m=1
+XM40 net3 vd_n vcc vcc sky130_fd_pr__pfet_g5v0d10v5 L=9.95 W=1 nf=1 m=1
+XR1 vss vss vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR2 vss vss vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR3 vss vss vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+XR13 vss vss vss sky130_fd_pr__res_xhigh_po_0p35 L=9.5 mult=1 m=1
+.ends
+
+
+* expanding   symbol:  /home/zerotoasic/Dalin/X51/xschem_x51/Latch/latch_sch.sym # of pins=6
+** sym_path: /home/zerotoasic/Dalin/X51/xschem_x51/Latch/latch_sch.sym
+** sch_path: /home/zerotoasic/Dalin/X51/xschem_x51/Latch/latch_sch.sch
+.subckt latch_sch Q VDD Qn VSS S R
+*.PININFO VDD:I VSS:I S:I R:I Q:O Qn:O
+XM1 net1 Qn VDD VDD sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=1 nf=1 m=1
+XM2 Q R net1 VDD sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=1 nf=1 m=1
+XM3 net2 S VDD VDD sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=1 nf=1 m=1
+XM4 Qn Q net2 VDD sky130_fd_pr__pfet_g5v0d10v5 L=0.5 W=1 nf=1 m=1
+XM5 Q Qn VSS VSS sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=1 nf=1 m=1
+XM6 Q R VSS VSS sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=1 nf=1 m=1
+XM7 Qn S VSS VSS sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=1 nf=1 m=1
+XM8 Qn Q VSS VSS sky130_fd_pr__nfet_g5v0d10v5 L=0.5 W=1 nf=1 m=1
+.ends
+
+
+* expanding   symbol:  /home/zerotoasic/Dalin/X51/xschem_x51/delay/slowsw_lvs.sym # of pins=4
+** sym_path: /home/zerotoasic/Dalin/X51/xschem_x51/delay/slowsw_lvs.sym
+** sch_path: /home/zerotoasic/Dalin/X51/xschem_x51/delay/slowsw_lvs.sch
+.subckt slowsw_lvs vcc vd_n vss vd
+*.PININFO vcc:I vss:I vd:I vd_n:O
+XM1 net1 vss net2 vcc sky130_fd_pr__pfet_g5v0d10v5 L=10 W=1 nf=1 m=1
+XM2 vd_n vss net1 vcc sky130_fd_pr__pfet_g5v0d10v5 L=10 W=1 nf=1 m=1
+XR2 net3 vd vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR3 net4 net3 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR4 net5 net4 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR5 net6 net5 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR6 net7 net6 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR7 net8 net7 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR8 net9 net8 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR9 net10 net9 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR10 net11 net10 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR11 net12 net11 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR12 net21 net2 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR13 net20 net21 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR14 net19 net20 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR15 net18 net19 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR16 net17 net18 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR17 net16 net17 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR18 net15 net16 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR19 net14 net15 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR20 net13 net14 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XR21 net12 net13 vss sky130_fd_pr__res_xhigh_po_0p35 L=25 mult=1 m=1
+XC2 vd_n vss sky130_fd_pr__cap_mim_m3_1 W=30 L=30 m=1
+XC1 vd_n vss sky130_fd_pr__cap_mim_m3_1 W=30 L=30 m=1
+XC3 vd_n vss sky130_fd_pr__cap_mim_m3_1 W=30 L=30 m=1
+XC4 vd_n vss sky130_fd_pr__cap_mim_m3_1 W=30 L=30 m=1
+.ends
+
